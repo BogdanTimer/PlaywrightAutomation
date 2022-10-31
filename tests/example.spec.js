@@ -1,4 +1,4 @@
-const { test, expect, request } = require('@playwright/test');
+const { test, expect } = require('@playwright/test');
 const {
   ucoz_MainPage,
 } = require('../src/page_objects/ucoz/mainPage/ucoz_MainPage');
@@ -25,13 +25,11 @@ test('UCOZ - Open hamburger menu button', async ({ page }) => {
   await ucozMainPage.clickButton(ucozMainPage.menu_btn);
 });
 
-test.only('UCOZ - Go to second sldie page by clicking on the side small dot button', async ({
+test('UCOZ - Go to second sldie page by clicking on the side small dot button', async ({
   page,
 }) => {
   const ucozMainPage = new ucoz_MainPage(page);
   await ucozMainPage.gotoMainPage();
   await ucozMainPage.gotoXsideBtn(2);
-  if (ucozMainPage.secondPageHeader.isVisible()) {
-    console.log('GG: ', await ucozMainPage.secondPageHeader.innerText());
-  }
+  await expect(ucozMainPage.secondPageHeader).toHaveText('Build it yourself');
 });
