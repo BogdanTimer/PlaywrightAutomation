@@ -50,6 +50,7 @@ const config = {
       name: 'chromium',
       use: {
         ...devices['Desktop Chrome'],
+        baseURL: 'https://www.ucoz.com',
       },
     },
 
